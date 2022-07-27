@@ -1,5 +1,6 @@
 {
   "name": "quote_machine",
+    "homepage": "https://mpaukov.github.io/quote_machine",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
