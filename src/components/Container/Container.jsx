@@ -5,6 +5,7 @@ const Div = styled.div`
   background-color: ${getRandomHexColor};
   margin: 0 auto;
   padding: 80px 160px;
+  height: 100vh;
 `;
 
 const Container = ({ children }) => {

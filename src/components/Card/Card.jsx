@@ -14,12 +14,6 @@ const CardWrapper = styled.div`
   box-shadow: 5px 5px 15px 5px #000000; ;
 `;
 
-const TextWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 const Text = styled.p`
   font-size: 24px;
   text-align: center;
@@ -33,9 +27,6 @@ const Author = styled.p`
 
 const Button = styled.button`
   display: block;
-  margin-left: auto;
-  margin-right: 30px;
-  margin-bottom: 60px;
 
   width: 120px;
   height: 60px;
@@ -46,21 +37,67 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const Link = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 58px;
+  height: 58px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: ${getRandomHexColor};
+  font-size: 36px;
+  text-decoration: none;
+  margin-right: 15px;
+`;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+`;
+
+const Thumb = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Card = ({ data, onClick }) => {
   return (
     <CardWrapper id="quote-box">
-      <TextWrapper>
-        <Text id="text">
-          <i className="fa fa-quote-left"></i>
-          {` ${data.quote} `}
-          <i className="fa fa-quote-right"></i>
-        </Text>
-      </TextWrapper>
-      <Author id="author">{data.author}</Author>
+      <Text id="text">
+        <i className="fa fa-quote-left"></i>
+        {` ${data.quote} `}
+        <i className="fa fa-quote-right"></i>
+      </Text>
 
-      <Button id="new-quote" type="button" onClick={onClick}>
-        New-quote
-      </Button>
+      <Author id="author">{data.author}</Author>
+      <LinkWrapper>
+        <Thumb>
+          <Link
+            id="tweet-quote"
+            title="Tweet this quote!"
+            target="_top"
+            href={`https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text=${data.quote} ${data.author}`}
+          >
+            <i className="fa fa-twitter"></i>
+          </Link>
+
+          <Link
+            id="tumblr-quote"
+            title="Post this quote on tumblr!"
+            target="_blank"
+            href={`https://www.tumblr.com/widgets/share/tool?posttype=quote&amp;tags=quotes,freecodecamp&amp;caption=${data.author}&amp;content=${data.quote}&amp;canonicalUrl=https://www.tumblr.com/buttons&amp;shareSource=tumblr_share_button`}
+            rel="noreferrer"
+          >
+            <i className="fa fa-tumblr"></i>
+          </Link>
+        </Thumb>
+        <Button id="new-quote" type="button" onClick={onClick}>
+          New quote
+        </Button>
+      </LinkWrapper>
     </CardWrapper>
   );
 };
